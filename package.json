@@ -1,0 +1,24 @@
+{
+  "name": "compute",
+  "version": "0.18.0420",
+  "description": "LabShare Compute",
+  "main": "index.js",
+  "scripts": {
+    "build:network": "docker network inspect jupyterhub-network >/dev/null 2>&1 || docker network create jupyterhub-network",
+    "build:notebook": "sh -ac '. ./.env; docker build -t jupyterhub-user --build-arg JUPYTERHUB_VERSION=$JUPYTERHUB_VERSION --build-arg DOCKER_NOTEBOOK_IMAGE=$DOCKER_NOTEBOOK_IMAGE --build-arg KG_URL=$KG_URL --build-arg KG_AUTH_TOKEN=$KG_AUTH_TOKEN run/notebook'",
+    "build:jupyterhub": "docker-compose -f ./run/docker-compose.yml build",
+    "build": "npm run build:network && npm run build:notebook && npm run build:jupyterhub",
+    "start": "npm run build && docker-compose -f ./run/docker-compose.yml up -d",
+    "stop": "docker-compose -f ./run/docker-compose.yml down",
+    "remove": "docker rmi jupyterhub kernel-gateway jupyterhub-user"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LabShare/compute.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LabShare/compute/issues"
+  },
+  "homepage": "https://github.com/LabShare/compute#readme"
+}
