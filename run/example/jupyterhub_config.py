@@ -23,8 +23,8 @@ ORGANIZATION = os.getenv('ORGANIZATION')  # LabShare Auth tenant
 AUTH_URL = os.getenv('AUTH_URL')          # URL of the LabShare Auth instance
 
 class LabShareAuthMixin(OAuth2Mixin):
-    _OAUTH_AUTHORIZE_URL = "%s/auth/%s/authorize" % AUTH_URL % ORGANIZATION
-    _OAUTH_ACCESS_TOKEN_URL = "%s/auth/oauth/token" % AUTH_URL
+    _OAUTH_AUTHORIZE_URL = "{0}/auth/{1}/authorize".format(AUTH_URL, ORGANIZATION)
+    _OAUTH_ACCESS_TOKEN_URL = "{0}/auth/oauth/token".format(AUTH_URL)
 
 
 class Auth0LoginHandler(OAuthLoginHandler, LabShareAuthMixin):
@@ -49,7 +49,7 @@ class LabShareAuthAuthenticator(OAuthenticator):
             'redirect_uri': self.get_callback_url(handler)
         }
 
-        url = "%s/auth/oauth/token" % AUTH_URL
+        url = "{0}/auth/oauth/token".format(AUTH_URL)
 
         headers={"Content-Type": "application/x-www-form-urlencoded"},
         body=urllib.parse.urlencode(params)
@@ -74,7 +74,7 @@ class LabShareAuthAuthenticator(OAuthenticator):
             }
 
             # Get user profile
-            req = HTTPRequest("%s/_api/auth/me" % AUTH_URL,
+            req = HTTPRequest("{0}/_api/auth/me".format(AUTH_URL),
                                       method="GET",
                                       headers=headers
                                       )
