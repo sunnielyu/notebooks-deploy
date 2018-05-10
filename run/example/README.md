@@ -16,25 +16,26 @@ zoe@google.domain admin
 wash@example.com
 ```
 
-## build
+## Build
 
 Build the container with:
 
     docker build -t jupyterhub-oauth .
 
-### ssl
+### SSL (optional)
 
 To run the server on HTTPS, put your ssl key and cert in ssl/ssl.key and
 ssl/ssl.cert.
 
-## run
+## Run
 
  - Go to the management UI of LabShare Auth and register a new `regular web` OAuth Client to a LabShare Auth Organization
- - Assign it one or more Identity Providers registered to the organization
- - Add the client id, client secret, LabShare organization, LabShare Auth URL, and callback URL to the local `env` file.
+ - Assign the OAuth Client one or more Identity Providers registered to the organization and the callback URL matching the JupyterHub host and port.
+ For example: "https://localhost:9000/hub/oauth_callback".
+ - Add the OAuth client id, secret, organization, LabShare Auth URL, and callback URL to the local JupyterHub `env` file.
 
 Once you have built the container, you can run it with:
 
-    docker run -it -p 8000:8000 --env-file=env jupyterhub-oauth
+    docker run -it -p 9000:8000 --env-file=env jupyterhub-oauth
 
 Which will run the Jupyter server.

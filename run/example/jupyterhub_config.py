@@ -45,20 +45,17 @@ class LabShareAuthAuthenticator(OAuthenticator):
             'grant_type': 'authorization_code',
             'client_id': self.client_id,
             'client_secret': self.client_secret,
-            'code':code,
+            'code': code,
             'redirect_uri': self.get_callback_url(handler)
         }
 
         url = "{0}/auth/oauth/token".format(AUTH_URL)
 
-        headers={"Content-Type": "application/x-www-form-urlencoded"},
-        body=urllib.parse.urlencode(params)
-
         # Get Access Token using Authorization Code
         req = HTTPRequest(url,
                           method="POST",
-                          headers=headers,
-                          body=body
+                          headers={"Content-Type": "application/x-www-form-urlencoded"},
+                          body=urllib.parse.urlencode(params)
                           )
 
         try:
@@ -74,7 +71,7 @@ class LabShareAuthAuthenticator(OAuthenticator):
             }
 
             # Get user profile
-            req = HTTPRequest("{0}/_api/auth/me".format(AUTH_URL),
+            req = HTTPRequest("{0}/auth/me".format(AUTH_URL),
                                       method="GET",
                                       headers=headers
                                       )

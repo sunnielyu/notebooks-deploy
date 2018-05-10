@@ -3,6 +3,6 @@
 
 OAUTH_CLIENT_ID=
 OAUTH_CLIENT_SECRET=
-ORGANIZATION=ls
+ORGANIZATION=
 AUTH_URL=https://a.labshare.org/_api
-OAUTH_CALLBACK_URL=http://localhost/hub/oauth_callback
+OAUTH_CALLBACK_URL=http://localhost:9000/hub/oauth_callback
