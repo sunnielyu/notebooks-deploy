@@ -19,4 +19,6 @@ RUN /opt/conda/bin/conda install -yq psycopg2=2.7 && \
 # RUN chmod 700 /srv/jupyterhub/secrets && \
 #    chmod 600 /srv/jupyterhub/secrets/*
 
+RUN useradd admin --password "$(openssl passwd -1 "password")"
+
 CMD ["jupyterhub", "-f", "/srv/jupyterhub/jupyterhub_config.py"]
