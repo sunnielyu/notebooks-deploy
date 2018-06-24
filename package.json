@@ -1,5 +1,5 @@
 {
-  "name": "compute",
+  "name": "@labshare/compute",
   "version": "0.18.0420",
   "description": "LabShare Compute",
   "main": "index.js",
@@ -10,7 +10,9 @@
     "build": "npm run build:network && npm run build:notebook && npm run build:jupyterhub",
     "start": "npm run build && docker-compose -f ./run/docker-compose.yml up -d",
     "stop": "docker-compose -f ./run/docker-compose.yml down",
-    "remove": "docker rmi jupyterhub kernel-gateway jupyterhub-user"
+    "remove": "docker rmi jupyterhub kernel-gateway jupyterhub-user",
+    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
@@ -20,5 +22,19 @@
   "bugs": {
     "url": "https://github.com/LabShare/compute/issues"
   },
-  "homepage": "https://github.com/LabShare/compute#readme"
+  "homepage": "https://github.com/LabShare/compute#readme",
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^7.0.0",
+    "@commitlint/config-conventional": "^7.0.1",
+    "husky": "^0.14.3",
+    "@labshare/semantic-release-config": "^1.0.0",
+    "semantic-release": "^15.5.0",
+    "coveralls": "^3.0.1"
+  },
+  "release": {
+    "extends": "@labshare/semantic-release-config"
+  }
 }
