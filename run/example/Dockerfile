@@ -1,5 +1,5 @@
-# Designed to be run as
-#
+# Designed to be run as 
+# 
 # docker run -it -p 8000:8000 jupyterhub/oauthenticator
 
 FROM jupyterhub/jupyterhub
@@ -19,4 +19,4 @@ ADD userlist /srv/oauthenticator/userlist
 ADD ssl /srv/oauthenticator/ssl
 RUN chmod 700 /srv/oauthenticator
 
-CMD ["sh", "/srv/oauthenticator/addusers.sh"]
+RUN ["sh", "/srv/oauthenticator/addusers.sh"]
