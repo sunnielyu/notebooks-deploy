@@ -13,7 +13,7 @@
 
 variable "gcp_cred" {
   description = "Cred secret for GCP API"
-  default     = "ls-compute-creds.json"
+  default     = ""
 }
 
 variable "gcp_region" {

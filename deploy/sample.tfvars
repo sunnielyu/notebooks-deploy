@@ -1,7 +1,7 @@
 ###############################################################################
 ## Google Cloud config options
 #  gcp_cred is a json formated service account secret
-gcp_cred = "ls-compute-creds.json"
+gcp_cred = ""
 gcp_region = "us-east1"
 gcp_project = "ls-compute"
 
