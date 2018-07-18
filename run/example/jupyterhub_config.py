@@ -19,11 +19,11 @@ OAUTH_CLIENT_ID = os.getenv('OAUTH_CLIENT_ID')
 OAUTH_CLIENT_SECRET = os.getenv('OAUTH_CLIENT_SECRET')
 OAUTH_CALLBACK_URL = os.getenv('OAUTH_CALLBACK_URL')
 
-ORGANIZATION = os.getenv('ORGANIZATION')  # LabShare Auth tenant
+TENANT = os.getenv('TENANT')  # LabShare Auth tenant
 AUTH_URL = os.getenv('AUTH_URL')          # URL of the LabShare Auth instance
 
 class LabShareAuthMixin(OAuth2Mixin):
-    _OAUTH_AUTHORIZE_URL = "{0}/auth/{1}/authorize".format(AUTH_URL, ORGANIZATION)
+    _OAUTH_AUTHORIZE_URL = "{0}/auth/{1}/authorize".format(AUTH_URL, TENANT)
     _OAUTH_ACCESS_TOKEN_URL = "{0}/auth/oauth/token".format(AUTH_URL)
 
 

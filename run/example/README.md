@@ -29,10 +29,21 @@ ssl/ssl.cert.
 
 ## Run
 
- - Go to the management UI of LabShare Auth and register a new `regular web` OAuth Client to a LabShare Auth Organization
- - Assign the OAuth Client one or more Identity Providers registered to the organization and the callback URL matching the JupyterHub host and port.
- For example: "https://localhost:9000/hub/oauth_callback".
- - Add the OAuth client id, secret, organization, LabShare Auth URL, and callback URL to the local JupyterHub `env` file.
+ - Go to the management UI of LabShare Auth and register a new `regular web` OAuth2 Client to a LabShare Auth
+ Tenant
+ - Assign the OAuth2 Client one or more Identity Providers registered to the Tenant and a trusted callback URL matching
+ the JupyterHub host and port. For example: "https://localhost:9000/hub/oauth_callback".
+ - Add the OAuth2 client Id, secret, tenant, LabShare Auth URL base URL, and callback URL to the local JupyterHub `env`
+ file.
+
+For example:
+```
+OAUTH_CLIENT_ID=abcdef
+OAUTH_CLIENT_SECRET=123910j250j124
+TENANT=my-tenant-id
+AUTH_URL=https://a.labshare.org/_api
+OAUTH_CALLBACK_URL=http://localhost:9000/hub/oauth_callback
+```
 
 Once you have built the container, you can run it with:
 
