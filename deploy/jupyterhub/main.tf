@@ -95,7 +95,7 @@ resource "kubernetes_pod" "jupyterhub" {
 //    }
 
     container {
-      image = "wadlie/jupyterhub:0.1"
+      image = ""
       name  = "hub"
 
       port {

@@ -23,7 +23,7 @@ resource "google_container_cluster" "arcts-kube" {
   enable_legacy_abac = true
 
   node_config {
-    service_account = "ls-compute@ls-compute.iam.gserviceaccount.com"
+    service_account = "${var.gke_service_account}"
     preemptible  = "${lookup(var.gke_options, "preemptible", "false")}"
     disk_size_gb = "${lookup(var.gke_options, "disk_size_gb", "50")}"
     machine_type = "${lookup(var.gke_options, "machine_type", "n1-standard-1")}"

@@ -27,3 +27,4 @@ gke_options = {
   disk_size_gb = 50
   machine_type = "n1-standard-1"
 }
+gke_service_account = ""

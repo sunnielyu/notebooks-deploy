@@ -32,7 +32,7 @@ resource "kubernetes_pod" "kernel-gateway" {
     service_account_name = "${kubernetes_service_account.kg-sa.metadata.0.name}"
 
     container {
-      image = "wadlie/kernel-gateway:1"
+      image = ""
       name = "kg"
 
       port {
