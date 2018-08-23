@@ -1,0 +1,8 @@
+# Add your oauth config to this file,
+# and run the container with `docker run -it -p 9000:8000 --env-file=env jupyterhub-oauth`
+
+OAUTH_CLIENT_ID=
+OAUTH_CLIENT_SECRET=
+TENANT=
+AUTH_URL=https://a.labshare.org/_api
+OAUTH_CALLBACK_URL=http://localhost:9000/hub/oauth_callback
