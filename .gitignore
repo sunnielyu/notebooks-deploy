@@ -72,3 +72,9 @@ devindex.*
 
 SharePointSelfSignedCert.key
 /facilities.json
+
+# Terraform
+.tfvars
+.terraform
+.tfstate
+.tfstate.backup
