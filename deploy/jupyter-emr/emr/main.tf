@@ -1,18 +1,3 @@
-//resource "aws_s3_bucket" "jupyter" {
-//  bucket = "${var.s3-bucket}"
-//
-//  tags {
-//    Name = "jupyter"
-//  }
-//}
-
-//data template_file "s3-conf" {
-//  template = "${file("${path.module}/s3-conf.json.tpl")}"
-//  vars {
-//    S3_BUCKET = "${var.s3-bucket}"
-//  }
-//}
-
 resource "aws_efs_file_system" "efs-volume" {
   creation_token = "jupyter"
   performance_mode = "generalPurpose"
@@ -26,12 +11,6 @@ resource "aws_efs_mount_target" "mount-target" {
   subnet_id = "${var.subnet-id}"
   security_groups = ["${var.emr-master-sg}", "${var.emr-slave-sg}"]
 }
-//data template_file "bootstrap-conf" {
-//  template = "${file("${path.module}/bootstrap.conf")}"
-//  vars {
-//    EFS_ID = "${aws_efs_file_system.efs-volume.id}"
-//  }
-//}
 
 resource "aws_emr_cluster" "cluster" {
   name = "emr_cluster"
@@ -54,13 +33,6 @@ resource "aws_emr_cluster" "cluster" {
   core_instance_count  = 2
 
   service_role = "${var.emr-service-role}"
-
-  //configurations_json = "${data.template_file.s3-conf.rendered}"
-
-//  bootstrap_action {
-//    name = "mount efs"
-//    path = "s3://jupyterhub-emr/bootstrap.conf"
-//  }
 
   depends_on = ["aws_efs_mount_target.mount-target"]
 
