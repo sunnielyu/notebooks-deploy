@@ -62,7 +62,7 @@ class LabShareAuthAuthenticator(OAuthenticator):
             resp = yield http_client.fetch(req)
             resp_json = json.loads(resp.body.decode('utf8', 'replace'))
 
-            access_token = resp_json['access_token']['accessToken']
+            access_token = resp_json['access_token']
 
             # Determine who the logged in user is
             headers={"Accept": "application/json",
