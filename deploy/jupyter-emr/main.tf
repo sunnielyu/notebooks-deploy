@@ -18,5 +18,5 @@ module "emr" {
   emr-slave-sg = "${module.security.emr-slave-sg}"
   ec2-role = "${module.security.ec2-role}"
   emr-service-role = "${module.security.emr-service-role}"
-  s3-bucket = "${var.S3_BUCKET}"
+  bootstrap-conf = "${var.BOOTSTRAP_CONF}"
 }
