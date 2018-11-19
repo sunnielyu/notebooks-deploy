@@ -1,3 +1,3 @@
 output "jupyterhub-dns" {
-  value = "${module.emr.emr-cluster-dns}:9443"
+  value = "https://${module.emr.emr-cluster-dns}:9443"
 }
