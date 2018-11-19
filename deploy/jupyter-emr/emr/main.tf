@@ -34,6 +34,12 @@ resource "aws_emr_cluster" "cluster" {
 
   service_role = "${var.emr-service-role}"
 
+  bootstrap_action {
+    name = "mount_efs"
+    path = "s3://${var.bootstrap-conf}"
+    args = ["${aws_efs_file_system.efs-volume.dns_name}"]
+  }
+
   depends_on = ["aws_efs_mount_target.mount-target"]
 
   tags {

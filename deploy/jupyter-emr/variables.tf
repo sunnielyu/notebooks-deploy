@@ -7,6 +7,6 @@ variable "PATH_TO_PUBLIC_KEY" {
 variable "ECS_INSTANCE_TYPE" {
   default = "m1.large"
 }
-variable "S3_BUCKET" {
-  default = "wipp-jupyterhub"
+variable "BOOTSTRAP_CONF" {
+  default = "jupyterhub-emr/bootstrap.conf"
 }

@@ -4,4 +4,4 @@ variable "emr-master-sg" {}
 variable "emr-slave-sg" {}
 variable "ec2-role" {}
 variable "emr-service-role" {}
-variable "s3-bucket" {}
+variable "bootstrap-conf" {}
