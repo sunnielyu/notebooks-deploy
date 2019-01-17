@@ -12,8 +12,7 @@
 ### Running JupyterHub Locally
 1. Build docker images using `npm run build`.
 1. Start JupyterHub on `localhost:8000` using `npm start`.
-1. To create user accounts on JupyterHub, access the container shell using `docker exec -ti jupyterhub bash`.
-1. Create a new user using `useradd <username>` and set a password using `passwd <username>`. 
+1. JupyterHub is setup with DummyAuthenticator by default. Use any username or password to login.
 
 ## Deployment
 
@@ -27,3 +26,10 @@
     * Add users to the running JupyterHub docker container using `sudo docker exec jupyterhub useradd -m -s /bin/bash -N <username>`.
     * Change user passwords using `sudo docker exec jupyterhub bash -c "echo <user>:<pw> | chpasswd"`.
 1. Destroy deployed application using `terraform destroy -var-file=sample.tfvars`.
+
+### Kubernetes
+1. Configure Kubernetes cluster and `kubectl`.
+1. Run `kubectl apply -f jupyterhub.yaml` to deploy application.
+1. Use `kubectl get pods` and `kubectl get svc` to check application is finished deploying.
+1. Access JupyterHub interface via External IP of `jupyterhub-public` service (`kubectl describe svc jupyterhub-public`).
+1. Delete deployed application using `kubectl delete -f jupyterhub.yaml`.
