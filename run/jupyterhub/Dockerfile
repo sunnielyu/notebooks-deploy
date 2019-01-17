@@ -9,7 +9,9 @@ RUN /opt/conda/bin/conda install -yq psycopg2=2.7 && \
     /opt/conda/bin/conda clean -tipsy && \
     /opt/conda/bin/pip install --no-cache-dir \
         oauthenticator==0.7.* \
-        dockerspawner==0.9.*
+        jupyterhub-dummyauthenticator==0.3.* \
+        dockerspawner==0.9.* \
+        jupyterhub-kubespawner==0.10.*
 
 # Copy TLS certificate and key
 # ENV SSL_CERT /srv/jupyterhub/secrets/jupyterhub.crt
@@ -18,7 +20,5 @@ RUN /opt/conda/bin/conda install -yq psycopg2=2.7 && \
 # COPY ./secrets/*.key $SSL_KEY
 # RUN chmod 700 /srv/jupyterhub/secrets && \
 #    chmod 600 /srv/jupyterhub/secrets/*
-
-RUN useradd admin --password "$(openssl passwd -1 "password")"
 
 CMD ["jupyterhub", "-f", "/srv/jupyterhub/jupyterhub_config.py"]

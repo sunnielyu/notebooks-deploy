@@ -71,3 +71,5 @@ c.JupyterHub.db_url = 'postgresql://postgres:{password}@{host}/{db}'.format(
     password=os.environ['POSTGRES_PASSWORD'],
     db=os.environ['POSTGRES_DB'],
 )
+
+c.JupyterHub.authenticator_class='dummyauthenticator.DummyAuthenticator'
