@@ -1,0 +1,24 @@
+# Jupyterhub and kernel gateway version
+JUPYTERHUB_VERSION=0.9.4
+KERNEL_GATEWAY_VERSION=1.1.2
+
+# Single-user Jupyter Notebook server container image
+DOCKER_NOTEBOOK_IMAGE=jupyter/minimal-notebook:87210526f381
+
+# Notebook directory in the container.
+# This directory is stored as a docker volume for each user
+DOCKER_NOTEBOOK_DIR=/home/jovyan/work
+
+# Name of the postgres database containing JupyterHub state
+POSTGRES_DB=postgres
+
+# Password of the postgres database
+POSTGRES_PASSWORD=password
+
+# URL of the kernel or enterprise gateway
+KG_URL=http://kernel-gateway:8888
+
+# Kernel gateway environment variables
+KG_ALLOW_ORIGIN=*
+KG_LIST_KERNELS=True
+KG_AUTH_TOKEN=token

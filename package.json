@@ -26,6 +26,7 @@
   "publishConfig": {
     "access": "restricted"
   },
+  "dependencies": {},
   "devDependencies": {
     "@commitlint/cli": "^7.0.0",
     "@commitlint/config-conventional": "^7.0.1",

@@ -19,10 +19,6 @@ logs
 # TypeScript
 *.js.map
 **/*.js
-!notebookRun.js
-!notebookLogic.js
-!routes.js
-!server.js
 
 # LabShare Packages
 packages
