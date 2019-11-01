@@ -17,18 +17,6 @@
 1. To stop the running deployment use `npm run stop`.
 
 ## Deployment
-
-### AWS
-1. Change working directory to `deploy/jupyter-emr`.
-1. Create a `sample.tfvars` to override variable defaults.
-1. Run `terraform init -var-file=sample.tfvars` to load required Terraform modules.
-1. Run `terraform apply -var-file=sample.tfvars` to create infrastructure and start application.
-1. Access the JupyterHub interface using the `jupyterhub-dns` output.
-    * JupyterHub uses PAM authentication. To add users, `ssh` into the EMR cluster master node (hadoop@<jupyterhub-dns>). 
-    * Add users to the running JupyterHub docker container using `sudo docker exec jupyterhub useradd -m -s /bin/bash -N <username>`.
-    * Change user passwords using `sudo docker exec jupyterhub bash -c "echo <user>:<pw> | chpasswd"`.
-1. Destroy deployed application using `terraform destroy -var-file=sample.tfvars`.
-
 ### Kubernetes
 1. Configure Kubernetes cluster and `kubectl`.
 1. Run `kubectl apply -f run/jupyterhub-sample.yaml` to deploy application.
