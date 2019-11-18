@@ -141,7 +141,18 @@ https://www.rdocumentation.org/packages/utils/versions/3.6.1/topics/install.pack
 Julia
 -----
 
+Install packages using ``Pkg`` as shown below
 
+.. code:: sos
+
+    using Pkg
+    Pkg.add("CSV")
+
+then load them with ``using`` statement:
+
+.. code:: sos
+
+    using CSV
 
 Java
 ----
