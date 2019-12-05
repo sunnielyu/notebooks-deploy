@@ -5,7 +5,7 @@ sos-xeus-cling==0.1.0
 sos-java==0.1.0
 jupyterlab-quickopen==0.3.0
 opencv-python==4.1.1.26
-jupyterlab-wipp==0.2.0
+jupyterlab-wipp==0.3.0
 facets-overview==1.0.0
 nbresuse
 git+https://github.com/jupyterlab/jupyterlab-git.git

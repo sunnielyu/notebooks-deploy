@@ -16,6 +16,6 @@ jupyterlab-python-file@0.3.0
 @parente/jupyterlab-quickopen@0.3.0
 jupyterlab-spreadsheet@0.2.0
 @krassowski/jupyterlab_go_to_definition@0.7.1
-jupyterlab_wipp@0.2.0
+jupyterlab_wipp@0.3.0
 jupyterlab-topbar-extension@0.4.0
 jupyterlab-system-monitor@0.4.1
