@@ -95,7 +95,9 @@ data:
 
     # Set up WIPP UI url for integration with WIPP
     c.KubeSpawner.environment = {
-        'WIPP_UI_URL': 'WIPP_UI_NOTEBOOKS_VALUE'
+        'WIPP_UI_URL': 'WIPP_UI_VALUE',
+        'WIPP_API_INTERNAL_URL': 'WIPP_API_INTERNAL_VALUE',
+        'WIPP_NOTEBOOKS_PATH': 'WIPP_NOTEBOOKS_PATH_VALUE'
     }
 
     # Service to shutdown inactive Notebook servers after --timeout seconds

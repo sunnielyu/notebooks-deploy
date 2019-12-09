@@ -116,7 +116,9 @@ pipeline {
                             sh "sed -i 's/NOTEBOOK_VERSION_VALUE/${NOTEBOOK_VERSION}/g' jupyterhub-configs.yaml"
                             sh "sed -i 's/STORAGE_PER_USER_VALUE/${STORAGE_PER_USER}/g' jupyterhub-configs.yaml"
                             sh "sed -i 's/WIPP_STORAGE_PVC_VALUE/${WIPP_STORAGE_PVC}/g' jupyterhub-configs.yaml"
-                            sh "sed -i 's|WIPP_UI_NOTEBOOKS_VALUE|${urls.wipp_ui_notebooks}|g' jupyterhub-configs.yaml"
+                            sh "sed -i 's|WIPP_UI_VALUE|${urls.wipp_ui}|g' jupyterhub-configs.yaml"
+                            sh "sed -i 's|WIPP_API_INTERNAL_VALUE|${urls.wipp_api_internal}|g' jupyterhub-configs.yaml"
+                            sh "sed -i 's|WIPP_NOTEBOOKS_PATH_VALUE|${urls.notebooks_path}|g' jupyterhub-configs.yaml"
                             sh "sed -i 's/HUB_VERSION_VALUE/${HUB_VERSION}/g' jupyterhub-deployment.yaml"
                             sh "sed -i 's|JUPYTERHUB_URL_VALUE|${urls.jupyterhub_url}|g' jupyterhub-services.yaml"
 
