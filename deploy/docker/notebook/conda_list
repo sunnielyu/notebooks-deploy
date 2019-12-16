@@ -2,6 +2,7 @@ tini=0.18.0
 notebook=6.0.1
 jupyterhub
 jupyterlab=1.2.3
+jupyter-archive=0.5.5
 conda-forge::blas=*=openblas
 ipywidgets=7.5*
 pandas=0.25*
