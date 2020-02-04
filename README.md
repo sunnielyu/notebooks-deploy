@@ -18,9 +18,6 @@
 
 ## Deployment
 ### Kubernetes
-1. Configure Kubernetes cluster and `kubectl`.
-1. Run `kubectl apply -f run/jupyterhub-sample.yaml` to deploy application.
-1. Use `kubectl get pods` and `kubectl get svc` to check application is finished deploying.
-1. Access JupyterHub interface via External IP of `jupyterhub` service (`kubectl describe svc jupyterhub`).
-1. If using minikube, use `minikube service jupyterhub` to get the External IP.
-1. Delete deployed application using `kubectl delete -f run/jupyterhub-sample.yaml`.
+1. Create a `.env` file in the root of the repository, using `sample-env` as an example.
+1. Configure `kubectl` with a `kubeconfig` pointing to the correct Kubernetes cluster. Optionally, pass the location of the `kubeconfig` file in the `.env`. This value defaults to the standard `kubeconfig` location. 
+1. Run the script using: `./deploy.sh`.
