@@ -22,7 +22,7 @@ data:
 
     # Per-user storage configuration
     c.KubeSpawner.pvc_name_template = 'claim-{username}'
-    c.KubeSpawner.storage_class = 'rook-cephfs'
+    c.KubeSpawner.storage_class = 'STORAGE_CLASS_VALUE'
     c.KubeSpawner.storage_capacity = 'STORAGE_PER_USER_VALUE'
     c.KubeSpawner.storage_access_modes = ['ReadWriteOnce']
     c.KubeSpawner.storage_pvc_ensure = True
