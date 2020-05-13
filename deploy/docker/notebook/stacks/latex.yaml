@@ -1,0 +1,7 @@
+name: latex
+apt:
+  - texlive-xetex
+pip:
+  - jupyterlab_latex: 1.0.0
+labextensions:
+  - "@jupyterlab/latex": 1.0.0
