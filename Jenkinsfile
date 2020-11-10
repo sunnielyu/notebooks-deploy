@@ -3,17 +3,14 @@ pipeline {
         node { label 'aws && ci && linux && polus' }
     }
     parameters {
-        booleanParam(name: 'SKIP_BUILD', defaultValue: false, description: 'Skips Docker builds')
+        booleanParam(name: 'SKIP_BUILD', defaultValue: false, description: 'Skips Notebook Docker builds')
+	booleanParam(name: 'BUILD_HUB', defaultValue: false, description: 'Build JupyterHub Docker')
 	string(name: 'AWS_REGION', defaultValue: 'us-east-1', description: 'AWS Region to deploy')
 	string(name: 'KUBERNETES_CLUSTER_NAME', defaultValue: 'kube-eks-ci-compute', description: 'Kubernetes Cluster to deploy')
     }
     environment {
         PROJECT_NAME = "labshare/notebooks-deploy"
         DOCKER_CLI_EXPERIMENTAL = "enabled"
-        BUILD_HUB = """${sh (
-            script: "git diff --name-only ${GIT_PREVIOUS_SUCCESSFUL_COMMIT} ${GIT_COMMIT} | grep 'jupyterhub/VERSION'",
-            returnStatus: true
-        )}"""
         BUILD_DOCS = """${sh (
             script: "git diff --name-only ${GIT_PREVIOUS_SUCCESSFUL_COMMIT} ${GIT_COMMIT} | grep 'docs/VERSION'",
             returnStatus: true
@@ -47,8 +44,7 @@ pipeline {
         }
         stage('Build JupyterHub Docker') {
             when {
-                environment name: 'SKIP_BUILD', value: 'false'
-                environment name: 'BUILD_HUB', value: '0'
+                environment name: 'BUILD_HUB', value: 'true'
             }
             steps {
                 script {
