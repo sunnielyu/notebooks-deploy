@@ -9,7 +9,60 @@ data:
 
 
     c = get_config()
-    c.JupyterHub.spawner_class = 'modularspawner.ModularSpawner'
+    c.JupyterHub.spawner_class = 'kubespawner.KubeSpawner'
+    
+    #c.KubeSpawner.image
+    c.KubeSpawner.default_url = '/lab'
+    c.KubeSpawner.uid = 1000
+    c.KubeSpawner.cmd = ['jupyter-labhub']
+    c.KubeSpawner.working_dir = '/home/jovyan'
+    c.KubeSpawner.service_account = 'jupyteruser-sa'
+    
+    c.KubeSpawner.pvc_name_template = 'claim-{username}'
+    c.KubeSpawner.storage_class = 'STORAGE_CLASS_VALUE'
+    c.KubeSpawner.storage_capacity = 'STORAGE_PER_USER_VALUE'
+    c.KubeSpawner.storage_access_modes = ['ReadWriteOnce']
+    c.KubeSpawner.storage_pvc_ensure = True
+
+    # Volumes to attach to Pod
+    c.KubeSpawner.volumes = [
+        {
+            'name': 'volume-{username}',
+            'persistentVolumeClaim': {
+                'claimName': 'claim-{username}'
+            }
+        },
+        {
+            'name': 'shared-volume',
+            'persistentVolumeClaim': {
+                'claimName': 'notebooks-pv-claim'
+            }
+        },
+        {
+            'name': 'wipp-volume',
+            'persistentVolumeClaim': {
+                'claimName': 'WIPP_STORAGE_PVC_VALUE'
+            }
+        }
+    ]
+
+    # Where to mount volumes
+    c.KubeSpawner.volume_mounts = [
+        {
+            'mountPath': '/home/jovyan/work',
+            'name': 'volume-{username}'
+        },
+        {
+            'mountPath': '/opt/shared/notebooks',
+            'name': 'shared-volume'
+        },
+        {
+            'mountPath': '/opt/shared/wipp',
+            'name': 'wipp-volume'
+        }
+    ]
+    
+    
     c.ModularSpawner.start_timeout=1000
 
     # Choose which stacks to use in modular spawner
