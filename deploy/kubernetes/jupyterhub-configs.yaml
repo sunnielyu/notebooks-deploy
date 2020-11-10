@@ -11,7 +11,7 @@ data:
     c = get_config()
     c.JupyterHub.spawner_class = 'kubespawner.KubeSpawner'
     
-    #c.KubeSpawner.image
+    c.KubeSpawner.image = labshare/polyglot-notebook:757f4f5cae7839f3865f0b1494b1967e7b15da0d73756a35cd8bf96ffb9aa551
     c.KubeSpawner.default_url = '/lab'
     c.KubeSpawner.uid = 1000
     c.KubeSpawner.cmd = ['jupyter-labhub']
